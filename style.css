@@ -1,0 +1,24 @@
+:root{color-scheme:dark;--bg:#050c16;--panel:#091827;--cyan:#58d8ff;--blue:#178bc9;--muted:#83a8bc;--line:rgba(88,216,255,.2)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 26%,#102c43 0%,#071522 42%,#030811 100%);color:#e8f8ff;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.shell{width:min(760px,100%);margin:auto;padding:22px 20px 18px;min-height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:4px 0 17px}
+.brand{display:flex;align-items:center;gap:11px;letter-spacing:2px}.brand-dot{width:11px;height:11px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}.brand strong{display:block;font-size:15px}.brand small{display:block;color:var(--muted);font-size:8px;letter-spacing:1.7px;margin-top:4px}
+.status{font-size:9px;letter-spacing:1.2px;color:var(--muted);display:flex;align-items:center;gap:8px}.status i{width:7px;height:7px;border-radius:50%;background:#7a8790}.status.active i{background:#5cffb1;box-shadow:0 0 10px #5cffb1}
+.hero{text-align:center;padding:34px 0 25px}.eyebrow{font-size:9px;letter-spacing:3px;color:#6faac5}
+.orb-wrap{height:245px;max-width:320px;margin:10px auto 0;position:relative;display:grid;place-items:center}
+.ring{position:absolute;border:1px solid rgba(75,205,255,.3);border-radius:50%;inset:18px;animation:spin 18s linear infinite}.ring-a{border-style:dashed;inset:22px}.ring-b{inset:42px;border-color:rgba(75,205,255,.18);animation-direction:reverse;animation-duration:25s}.ring-c{inset:61px;border-color:rgba(75,205,255,.38);box-shadow:0 0 25px rgba(33,166,230,.08)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb{width:132px;height:132px;border-radius:50%;border:1px solid #67ddff;background:radial-gradient(circle at 50% 45%,#1b83ad 0%,#0b4265 35%,#061827 72%);box-shadow:0 0 24px #168ac566,inset 0 0 24px #4dd7ff55;display:grid;place-items:center;cursor:pointer;z-index:2}
+.orb-core{width:60px;height:60px;border-radius:50%;border:1px solid #8ce9ff;display:flex;align-items:center;justify-content:center;gap:4px;box-shadow:0 0 18px #55dfff66}
+.wave{width:3px;height:17px;background:#b8f4ff;border-radius:4px;box-shadow:0 0 8px #68e1ff}.w2{height:28px}.w3{height:12px}
+body.listening .orb{animation:pulse 1.6s ease-in-out infinite}body.speaking .orb{box-shadow:0 0 42px #36cfffaa,inset 0 0 32px #4dd7ff99}
+@keyframes pulse{50%{transform:scale(1.045);box-shadow:0 0 45px #2fcaffaa,inset 0 0 32px #4dd7ff99}}
+h1{font-size:25px;font-weight:500;letter-spacing:.5px;margin:0 0 9px}#subline{font-size:13px;color:var(--muted);margin:0}#subline b{color:#b9edff}
+.controls{display:flex;justify-content:center;gap:10px;margin-top:23px}button{font:inherit}
+.primary,.secondary{border-radius:5px;padding:12px 18px;font-size:10px;letter-spacing:1.5px;cursor:pointer}.primary{background:#0e6f9e;border:1px solid #49cfff;color:white;box-shadow:0 0 18px #168ac544}.secondary{background:transparent;border:1px solid var(--line);color:#9cc7da}.secondary:disabled{opacity:.4;cursor:default}
+.hint{font-size:10px;color:#66899d;margin-top:14px}
+.conversation{background:linear-gradient(145deg,rgba(9,24,39,.9),rgba(5,15,26,.8));border:1px solid var(--line);border-radius:9px;padding:15px;min-height:170px;flex:1;max-height:340px;display:flex;flex-direction:column}
+.section-title{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1.8px;color:#83b8d0;border-bottom:1px solid var(--line);padding-bottom:11px}.section-title button{background:none;border:0;color:#6e9cb2;font-size:9px;letter-spacing:1px}
+.messages{overflow:auto;padding:7px 2px}.message{padding:10px 9px;border-bottom:1px solid rgba(88,216,255,.08)}.message:last-child{border:0}.who{font-size:9px;letter-spacing:1.4px;color:var(--cyan)}.message.user .who{color:#b7d1e2}.message p{font-size:13px;line-height:1.55;color:#d7eaf3;margin:5px 0 0;white-space:pre-wrap}
+footer{display:flex;justify-content:space-between;color:#456a80;font-size:8px;letter-spacing:1.3px;padding-top:16px}
+@media(min-width:650px){.hero{padding-top:45px}.orb-wrap{height:270px}.conversation{max-height:300px}}
