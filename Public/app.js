@@ -13,7 +13,7 @@ let recognition = null;
 let listening = false;
 let waitingForCommand = false;
 let speaking = false;
-let restarting = false;
+let restarting = null;
 let history = [];
 let audioPlayer = null;
 
@@ -219,13 +219,11 @@ function initializeRecognition() {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  recognition.onstart = () => {
-    restarting = false;
-    setStatus("ESCUTANDO", true);
-    headline.textContent = "À sua disposição.";
-    subline.textContent = 'Diga "Jarvis" para iniciar uma conversa.';
-  };
-
+ recognition.onstart = () => {
+  setStatus("ESCUTANDO", true);
+  headline.textContent = "À sua disposição.";
+  subline.textContent = 'Diga "Jarvis" para iniciar uma conversa.';
+};
   recognition.onresult = (event) => {
     const result = event.results[event.results.length - 1];
 
@@ -247,14 +245,12 @@ function initializeRecognition() {
   };
 
   recognition.onend = () => {
-    restarting = false;
-
-    if (listening && !speaking) {
-      setTimeout(restartRecognition, 700);
-    } else if (!listening) {
-      setStatus("SISTEMA EM PAUSA");
-    }
-  };
+  if (listening && !speaking) {
+    restartRecognition();
+  } else if (!listening) {
+    setStatus("SISTEMA EM PAUSA");
+  }
+};
 
   return true;
 }
