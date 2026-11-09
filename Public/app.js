@@ -185,18 +185,18 @@ function processTranscript(transcript) {
 }
 
 function restartRecognition() {
-  if (!listening || speaking || !recognition || restarting) return;
+  if (!listening || speaking || !recognition || restartTimer) return;
 
-  restarting = true;
+  restartTimer = setTimeout(() => {
+    restartTimer = null;
 
-  try {
-    recognition.start();
-  } catch (error) {
-    console.warn("Reconhecimento:", error.message);
-  }
+    if (!listening || speaking) return;
 
-  setTimeout(() => {
-    restarting = false;
+    try {
+      recognition.start();
+    } catch (error) {
+      console.log("Aguardando reinício da escuta:", error.message);
+    }
   }, 1000);
 }
 
