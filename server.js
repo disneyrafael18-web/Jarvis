@@ -6,7 +6,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json({ limit: "1mb" }));
-app.use(express.static("public"));
+app.use(express.static("Public"));
 
 const required = ["OPENAI_API_KEY", "FISH_AUDIO_API_KEY", "FISH_VOICE_ID"];
 const missing = required.filter((key) => !process.env[key]);
